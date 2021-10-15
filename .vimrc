@@ -5,3 +5,7 @@ Plugin 'scrooloose/nerdtree'
 call vundle#end()
 syntax on
 colorscheme vimvscode
+set number
+set tabstop=2
+set shiftwidth=2
+set expandtab
