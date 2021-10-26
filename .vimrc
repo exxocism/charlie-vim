@@ -10,4 +10,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set splitbelow
-set clipboard=unnamed
+if has('win32') || has('macunix')
+  set clipboard=unnamed
+endif
+if has('linux')
+  set clipboard=unnamedplus
+endif
