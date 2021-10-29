@@ -28,8 +28,14 @@ if has('macunix')
 endif
 if has('linux')
   set clipboard=unnamedplus
-  autocmd VimEnter * ter ++rows=12
-  autocmd VimEnter * wincmd w
+  let uname = system('uname -a | grep Android')
+  if len(uname) > 7
+    autocmd VimEnter * ter ++rows=8
+    autocmd VimEnter * wincmd w
+  else
+    autocmd VimEnter * ter ++rows=12
+    autocmd VimEnter * wincmd w
+  endif
 endif
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd w
