@@ -16,10 +16,19 @@ set expandtab
 set splitbelow
 if has('win32') || has('macunix')
   set clipboard=unnamed
+  autocmd VimEnter * ter ++rows=12
+  autocmd VimEnter * wincmd w
 endif
 if has('macunix')
   set backspace=indent,eol,start
+  autocmd VimEnter * ter ++rows=12
+  autocmd VimEnter * wincmd w
 endif
 if has('linux')
   set clipboard=unnamedplus
+  autocmd VimEnter * ter ++rows=12
+  autocmd VimEnter * wincmd w
 endif
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd w
+
