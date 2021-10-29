@@ -17,6 +17,9 @@ set splitbelow
 if has('win32') || has('macunix')
   set clipboard=unnamed
 endif
+if has('macunix')
+  set backspace=indent,eol,start
+endif
 if has('linux')
   set clipboard=unnamedplus
 endif
