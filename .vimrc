@@ -15,6 +15,7 @@ set shiftwidth=2
 set expandtab
 set splitbelow
 if has('win32') 
+  set backspace=indent,eol,start
   set clipboard=unnamed
   autocmd VimEnter * ter ++rows=12
   autocmd VimEnter * wincmd w
