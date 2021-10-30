@@ -1,5 +1,6 @@
 set rtp+=~/.vim/bundle/Vundle.vim/
 let g:usemarks=0
+let NERDTreeShowHidden=1
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
