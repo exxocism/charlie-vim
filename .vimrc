@@ -14,6 +14,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set splitbelow
+set hidden
+set autoread
 if has('win32') 
   set backspace=indent,eol,start
   set clipboard=unnamed
