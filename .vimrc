@@ -2,6 +2,7 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 let g:usemarks=0
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdtree'
 Bundle 'LucHermitte/lh-vim-lib'
 Bundle 'LucHermitte/lh-brackets'
