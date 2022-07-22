@@ -1,0 +1,14 @@
+#!/bin/bash
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install xubuntu-desktop -y
+sudo apt install vnc4server -y
+sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config
+sudo cp -f ./xfce/*.pkla /etc/polkit-1/localauthority/50-local.d/
+cp -f ./xfce/.xsess* ~/
+chmod +x .xsess*
+mkdir ~/.vnc
+cp -f ./xfce/xstartup ~/.vnc
+chmod +x ~/.vnc/xstartup
+vncserver -geometry 1920x1080
+echo Type ssh -L 15901:localhost:5901 username@server -N

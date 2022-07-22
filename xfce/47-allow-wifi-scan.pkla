@@ -1,0 +1,6 @@
+[Allow WiFi Scan all Users]
+Identity=unix-user:*
+Action=org.freedesktop.NetworkManager.wifi.scan
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
