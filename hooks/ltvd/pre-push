@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+# Current Version
+PREPUSH_VERSION=3
+PREPUSH_PATH="$HOME/.vim/hooks/ltvd/pre-push"
+HOOK_PATH="$(git rev-parse --git-dir)/hooks/pre-push"
+
+# Script Version Check
+chmod +x $PREPUSH_PATH
+if [ "$1" = "check-version" ]; then
+  echo $PREPUSH_VERSION
+  exit $PREPUSH_VERSION
+fi
+
+echo "Checking for new version of hook..."
+NEW_VERSION=$($PREPUSH_PATH check-version)
+
+if [ $NEW_VERSION -gt $PREPUSH_VERSION ]; then
+  echo "============================================"
+  echo "New version of hook found. Updating... ($PREPUSH_VERSION -> $NEW_VERSION)"
+  cp -f $PREPUSH_PATH $HOOK_PATH
+  chmod +x $HOOK_PATH
+  echo "Done. Please push again."
+  echo "============================================"
+  exit 1
+fi
+
+cmd="source $HOME/.zshrc && nvm use && make test"
+
+echo "============================================"
+echo "Running unit tests before push..."
+echo "============================================"
+if ! eval "$cmd"; then
+  echo "============================================"
+  echo " UNIT TEST FAILED!! $cmd" >&2
+  echo "============================================"
+  read -p "Are you sure to push? (y/N)" force_push
+  if [ "$force_push" != "y" ]; then
+    exit 0
+  fi
+  exit 1
+fi
+
+exit 0

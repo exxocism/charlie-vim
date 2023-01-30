@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+# Current Version
+PREPUSH_VERSION=7
+PREPUSH_PATH="$HOME/.vim/hooks/vast/pre-push"
+HOOK_PATH="$(git rev-parse --git-dir)/hooks/pre-push"
+
+# Script Version Check
+chmod +x $PREPUSH_PATH
+if [ "$1" = "check-version" ]; then
+  echo $PREPUSH_VERSION
+  exit $PREPUSH_VERSION
+fi
+
+echo "Checking for new version of hook..."
+NEW_VERSION=$($PREPUSH_PATH check-version)
+
+if [ $NEW_VERSION -gt $PREPUSH_VERSION ]; then
+  echo "============================================"
+  echo "New version of hook found. Updating... ($PREPUSH_VERSION -> $NEW_VERSION)"
+  cp -f $PREPUSH_PATH $HOOK_PATH
+  chmod +x $HOOK_PATH
+  echo "Done. Please push again."
+  echo "============================================"
+  exit 1
+fi
+
+cmd="source $HOME/.zshrc && nvm use && npm run test:deploy"
+
+echo "============================================"
+echo "Running unit tests before push... (1/2)"
+echo "============================================"
+if ! eval "$cmd"; then
+  echo "============================================"
+  echo " UNIT TEST FAILED!! $cmd" >&2
+  echo "============================================"
+  exit 1
+fi
+
+cmd="CI=true && npm run test:e2e"
+
+echo "============================================"
+echo "Running e2e tests before push... (2/2)"
+echo "============================================"
+if ! eval "$cmd"; then
+  echo "============================================"
+  echo " E2E TEST FAILED!! $cmd" >&2
+  echo "============================================"
+  read -p "Are you sure to push? (y/N)" force_push
+  if [ "$force_push" != "y" ]; then
+    exit 0
+  fi
+  exit 1
+fi
+
+exit 0
