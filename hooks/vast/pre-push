@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Current Version
-PREPUSH_VERSION=10
+PREPUSH_VERSION=12
 PREPUSH_PATH="$HOME/.vim/hooks/vast/pre-push"
 HOOK_PATH="$(git rev-parse --git-dir)/hooks/pre-push"
 
@@ -37,7 +37,7 @@ if ! eval "$cmd"; then
   exit 1
 fi
 
-cmd="CI=true && npm run test:e2e"
+cmd="export PLAYWIRGHT_LOCAL_WORKER_COUNT=3 && npm run test:e2e"
 
 echo "============================================"
 echo "Running e2e tests before push... (2/2)"
