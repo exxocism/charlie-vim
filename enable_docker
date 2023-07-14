@@ -1,0 +1,14 @@
+#!/bin/bash
+
+wget http://archive.ubuntu.com/ubuntu/pool/main/libs/libseccomp/libseccomp2_2.3.1-2.1ubuntu4_amd64.deb
+sudo dpkg --install ./libseccomp2_2.3.1-2.1ubuntu4_amd64.deb
+wget https://download.docker.com/linux/ubuntu/dists/trusty/pool/stable/amd64/containerd.io_1.2.6-3_amd64.deb
+sudo dpkg --install ./containerd.io_1.2.6-3_amd64.deb
+wget https://download.docker.com/linux/ubuntu/dists/trusty/pool/stable/amd64/docker-ce_18.06.1~ce~3-0~ubuntu_amd64.deb
+sudo dpkg --install ./docker-ce_18.06.1~ce~3-0~ubuntu_amd64.deb
+wget https://github.com/docker/compose/releases/download/v2.19.1/docker-compose-linux-x86_64 -O docker-compose
+sudo cp -f ./docker-compose /bin/docker-compose
+sudo chmod +x /bin/docker-compose
+echo "==========================="
+echo " DOCKER INSTLLED (18.06.1)"
+echo "==========================="
