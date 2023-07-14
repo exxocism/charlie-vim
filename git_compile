@@ -6,12 +6,12 @@ sudo apt-get install dh-autoreconf libcurl4-gnutls-dev libexpat1-dev \
 sudo apt-get install asciidoc xmlto docbook2x install-info -y
 sudo apt install libz-dv-ev libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext cmake gcc -y
 
-sudo curl -fsSL https://www.openssl.org/source/openssl-1.1.1n.tar.gz --output /usr/local/src/openssl-1.1.1n.tar.gz
-sudo tar xfz /usr/local/src/openssl-1.1.1n.tar.gz -C /usr/local/src/
-pushd /usr/local/src/openssl-1.1.1n
+sudo curl -fsSL https://www.openssl.org/source/openssl-1.1.1u.tar.gz --output /usr/local/src/openssl-1.1.1u.tar.gz
+sudo tar xfz /usr/local/src/openssl-1.1.1u.tar.gz -C /usr/local/src/
+pushd /usr/local/src/openssl-1.1.1u
 sudo ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
 sudo make && sudo make install
-sudo echo "/usr/local/ssl/lib" > /etc/ld.so.conf.d/openssl-1.1.1n.conf
+sudo echo "/usr/local/ssl/lib" > /etc/ld.so.conf.d/openssl-1.1.1u.conf
 ldconfig -v
 popd
 
