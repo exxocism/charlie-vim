@@ -19,6 +19,8 @@ git clone https://github.com/git/git ~/git
 cd ~/git
 make prefix=/usr/local all CFLAGS="-std=gnu99" LDFLAGS="-L/usr/local/ssl/lib" LDLIBS="-lssl -lcrypto"
 sudo make prefix=/usr/local install CFLAGS="-std=gnu99" LDFLAGS="-L/usr/local/ssl/lib" LDLIBS="-lssl -lcrypto"
+sudo rm /usr/bin/git
+git --version
 echo "==========================="
 echo " GIT INSTALLED "
 echo "==========================="
