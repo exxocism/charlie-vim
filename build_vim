@@ -15,6 +15,7 @@ cd ~/.vim
 cp .vimrc ~/
 git submodule init
 git submodule update
+sudo ln -sf /usr/local/bin/vim /usr/bin/vi
 echo "==========================="
 echo " Vim install Finished"
 echo "==========================="
