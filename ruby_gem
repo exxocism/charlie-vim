@@ -3,10 +3,9 @@
 # Step 13. install gems
 if [[ ! -d "/usr/local/rvm/gems/ruby-2.7.1/gems/rubocop-1.57.1" ]]; then
   echo "[BOOTSTRAP 13/$STEP] Installing gems..."
-  sudo su - webuser -c "rvm use ruby-2.7.1 && gem install rubocop -v 1.57.1 && gem install solargraph rufo bundler && gem uninstall bundler -v 1.17.3 --force && gem update --system 3.4.20"
-  sudo su - webuser -c "rvm use ruby-2.7.6 && gem install rubocop -v 1.57.1 && gem install solargraph rufo bundler && gem uninstall bundler -v 1.17.3 --force && gem update --system 3.4.20"
+  sudo su - webuser -c "rvm use ruby-2.7.1 && gem install rubocop -v 1.57.1 && gem update --system 3.4.20 && gem install solargraph:0.48.0"
+  sudo su - webuser -c "rvm use ruby-2.7.6 && gem install rubocop -v 1.57.1 && gem update --system 3.4.20 && gem install solargraph:0.48.0"
 
-  sudo su - webuser -c "rvm use ruby-2.3.0 && gem install rexml -v 3.2.5 && gem install racc -v 1.5.2 && gem install parallel -v 1.19.2 && gem install rubocop -v 0.81.0"
+  sudo su - webuser -c "rvm use ruby-2.3.0 && gem install rexml -v 3.2.5 &&  gem update --system 3.3.26 && gem install racc -v 1.5.2 && gem install parallel -v 1.19.2 && gem install rubocop -v 0.81.0"
   sudo su - webuser -c "rvm use ruby-2.3.0 && gem install rufo -v 0.3.1 && gem install bundler -v 2.3.26 && gem install nokogiri -v 1.10.10 && gem install solargraph -v 0.39.17"
-  sudo su - webuser -c "rvm use ruby-2.3.0 && gem uninstall bundler -v 1.17.3 --force && gem update --system 3.3.26"
 fi
