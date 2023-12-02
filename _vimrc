@@ -1,7 +1,7 @@
 filetype off
 set shellslash
-set rtp+=~/vimfiles/bundle/Vundle.vim
-call vundle#begin('~/vimfiles/bundle')
+set rtp+=$VIM/bundle/Vundle.vim
+call vundle#begin('$VIM/bundle')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdtree'
