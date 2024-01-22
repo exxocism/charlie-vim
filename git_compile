@@ -6,12 +6,12 @@ sudo apt-get install dh-autoreconf libcurl4-gnutls-dev libexpat1-dev \
 sudo apt-get install asciidoc xmlto docbook2x install-info -y
 sudo apt install libz-dv-ev libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext cmake gcc -y
 
-sudo curl -fsSL https://www.openssl.org/source/openssl-1.1.1u.tar.gz --output /usr/local/src/openssl-1.1.1u.tar.gz
-sudo tar xfz /usr/local/src/openssl-1.1.1u.tar.gz -C /usr/local/src/
-pushd /usr/local/src/openssl-1.1.1u
+sudo curl -fsSL https://www.openssl.org/source/openssl-1.1.1w.tar.gz --output /usr/local/src/openssl-1.1.1w.tar.gz
+sudo tar xfz /usr/local/src/openssl-1.1.1w.tar.gz -C /usr/local/src/
+pushd /usr/local/src/openssl-1.1.1w
 sudo ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
 sudo make && sudo make install
-sudo echo "/usr/local/ssl/lib" > /etc/ld.so.conf.d/openssl-1.1.1u.conf
+sudo echo "/usr/local/ssl/lib" > /etc/ld.so.conf.d/openssl-1.1.1w.conf
 ldconfig -v
 popd
 
@@ -19,7 +19,7 @@ git clone https://github.com/git/git ~/git
 cd ~/git
 make prefix=/usr/local all CFLAGS="-std=gnu99" LDFLAGS="-L/usr/local/ssl/lib" LDLIBS="-lssl -lcrypto"
 sudo make prefix=/usr/local install CFLAGS="-std=gnu99" LDFLAGS="-L/usr/local/ssl/lib" LDLIBS="-lssl -lcrypto"
-sudo rm /usr/bin/git
+sudo ln -sf /usr/local/bin/git /usr/bin/git
 git --version
 echo "==========================="
 echo " GIT INSTALLED "
