@@ -17,6 +17,7 @@ popd
 
 git clone https://github.com/git/git ~/git
 cd ~/git
+git checkout v2.43.3
 make prefix=/usr/local all CFLAGS="-std=gnu99" LDFLAGS="-L/usr/local/ssl/lib" LDLIBS="-lssl -lcrypto"
 sudo make prefix=/usr/local install CFLAGS="-std=gnu99" LDFLAGS="-L/usr/local/ssl/lib" LDLIBS="-lssl -lcrypto"
 sudo ln -sf /usr/local/bin/git /usr/bin/git
